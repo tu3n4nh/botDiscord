@@ -1,7 +1,7 @@
 require("dotenv").config();
 const {google} = require('googleapis');
 const { Client, GatewayIntentBits, Collection} = require("discord.js")
-const CHANNEL_ID = '1089783558291345508';
+const CHANNEL_ID = '1089570859775172680';
 // Define a client
 const client = new Client({
     intents: [GatewayIntentBits.Guilds],
