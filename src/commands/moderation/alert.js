@@ -36,25 +36,29 @@ const getEvents = async (dateTimeStart, dateTimeEnd) => {
     }
 };
 
-// Take two dates between in this month
-let dTime = new Date();
-let month = dTime.getMonth()+1;
-if (month < 10) {
-    month = `0${month}`;
-}
-let start = `${dTime.getFullYear()}-${month}-01T00:00:00.000Z`;
-let end = `${dTime.getFullYear()}-${month}-31T00:00:00.000Z`;
+
+
 
 module.exports = {
     name: "alert",
     description: "Thông báo lịch!",
 
     run: async (client, interaction) => {
+
+        // Take two dates between in this month
+        let dTime = new Date();
+        let month = dTime.getMonth()+1;
+        if (month < 10) {
+            month = `0${month}`;
+        }
+        let start = `${dTime.getFullYear()}-${month}-01T00:00:00.000Z`;
+        let today = new Date();
+        let lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+        let end = `${dTime.getFullYear()}-${month}-${lastDayOfMonth}T00:00:00.000Z`;
         
         getEvents(start, end)
             .then((res) => {
                 if(res){
-
                 
                 let contents = "";
 
